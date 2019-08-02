@@ -11,6 +11,6 @@ import java.util.Set;
 public class ModelHandlerConfig {
 	@Bean
 	public HandlerFactory<ModelHandler, ModelData> handlerFactory(Set<ModelHandler> handlers) {
-		return new HandlerFactory<>(/*ModelHandler.class, */handlers);
+		return new HandlerFactory<>(handlers);
 	}
 }

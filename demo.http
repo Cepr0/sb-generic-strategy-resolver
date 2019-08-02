@@ -1,0 +1,37 @@
+
+POST http://localhost:8080/models
+Content-Type: application/json
+
+{
+  "type": "FIRST",
+  "data": {
+    "first": "first"
+  }
+}
+
+###
+
+POST http://localhost:8080/models
+Content-Type: application/json
+
+{
+  "type": "SECOND",
+  "data": {
+    "second": "second"
+  }
+}
+
+###
+
+POST http://localhost:8080/models
+Content-Type: application/json
+
+{
+  "type": "THIRD",
+  "data": {
+    "first": "first"
+  }
+}
+
+###
+

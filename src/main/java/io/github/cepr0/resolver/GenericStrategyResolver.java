@@ -1,4 +1,4 @@
-package io.github.cepr0.demo.resolver;
+package io.github.cepr0.resolver;
 
 import org.springframework.core.ResolvableType;
 

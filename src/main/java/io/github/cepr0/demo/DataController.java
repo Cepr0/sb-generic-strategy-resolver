@@ -2,8 +2,8 @@ package io.github.cepr0.demo;
 
 import io.github.cepr0.demo.data.Data;
 import io.github.cepr0.demo.data.DataTO;
-import io.github.cepr0.demo.resolver.GenericStrategyResolver;
 import io.github.cepr0.demo.strategy.DataHandlerStrategy;
+import io.github.cepr0.resolver.GenericStrategyResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

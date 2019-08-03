@@ -1,7 +1,7 @@
 package io.github.cepr0.demo.strategy;
 
 import io.github.cepr0.demo.data.Data;
-import io.github.cepr0.demo.resolver.GenericStrategyResolver;
+import io.github.cepr0.resolver.GenericStrategyResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

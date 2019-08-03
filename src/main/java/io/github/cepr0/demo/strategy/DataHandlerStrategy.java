@@ -1,4 +1,4 @@
-package io.github.cepr0.demo.handler;
+package io.github.cepr0.demo.strategy;
 
 import io.github.cepr0.demo.data.Data;
 

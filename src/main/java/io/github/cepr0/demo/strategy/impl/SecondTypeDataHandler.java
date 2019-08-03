@@ -1,7 +1,7 @@
-package io.github.cepr0.demo.handler.impl;
+package io.github.cepr0.demo.strategy.impl;
 
 import io.github.cepr0.demo.data.impl.SecondTypeData;
-import io.github.cepr0.demo.handler.DataHandlerStrategy;
+import io.github.cepr0.demo.strategy.DataHandlerStrategy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

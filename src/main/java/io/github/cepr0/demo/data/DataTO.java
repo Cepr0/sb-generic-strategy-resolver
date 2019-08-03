@@ -16,7 +16,12 @@ public class DataTO<T extends Data> {
 	private String type;
 
 	@NotNull
-	@JsonTypeInfo(use = CUSTOM, include = EXTERNAL_PROPERTY, property = "type")
+	@JsonTypeInfo(
+			use = CUSTOM,
+			include = EXTERNAL_PROPERTY,
+			property = "type",
+			defaultImpl = DefaultData.class
+	)
 	@JsonTypeIdResolver(DataTypeIdResolver.class)
 	private T data;
 }

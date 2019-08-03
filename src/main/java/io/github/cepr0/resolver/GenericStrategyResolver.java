@@ -10,20 +10,20 @@ import java.util.Optional;
 
 public class GenericStrategyResolver<T, D> {
 
-	private final Map<Class<?>, T> beans = new HashMap<>();
+	private final Map<Class<?>, T> strategies = new HashMap<>();
 
-	public GenericStrategyResolver(@NonNull Collection<T> beans) {
-		for (T bean : beans) {
-			ResolvableType beanType = ResolvableType.forInstance(bean);
-			for (ResolvableType beanInterface : beanType.getInterfaces()) {
-				for (ResolvableType beanInterfaceGenericParameter : beanInterface.getGenerics()) {
-					this.beans.put(beanInterfaceGenericParameter.getRawClass(), bean);
+	public GenericStrategyResolver(@NonNull Collection<T> strategies) {
+		for (T strategy : strategies) {
+			ResolvableType strategyType = ResolvableType.forInstance(strategy);
+			for (ResolvableType strategyInterface : strategyType.getInterfaces()) {
+				for (ResolvableType strategyInterfaceGenericParameter : strategyInterface.getGenerics()) {
+					this.strategies.put(strategyInterfaceGenericParameter.getRawClass(), strategy);
 				}
 			}
 		}
 	}
 
 	public Optional<T> resolve(Class<? extends D> dataType) {
-		return Optional.ofNullable((beans.get(dataType)));
+		return Optional.ofNullable((strategies.get(dataType)));
 	}
 }

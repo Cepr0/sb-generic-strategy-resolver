@@ -1,11 +1,11 @@
-package io.github.cepr0.demo.model;
+package io.github.cepr0.demo.data;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefaultData implements ModelData {
+public class DefaultData implements Data {
 
 	final Map<String, String> props = new HashMap<>();
 

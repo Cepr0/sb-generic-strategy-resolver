@@ -1,23 +1,22 @@
-package io.github.cepr0.demo.model;
+package io.github.cepr0.demo.data;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
-import lombok.Data;
+import lombok.Value;
 
 import javax.validation.constraints.NotNull;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.EXTERNAL_PROPERTY;
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CUSTOM;
 
-@Data
-public class ModelDto<T extends ModelData> {
+@Value
+public class DataTO<T extends Data> {
 
 	@NotNull
 	private String type;
 
 	@NotNull
 	@JsonTypeInfo(use = CUSTOM, include = EXTERNAL_PROPERTY, property = "type")
-	@JsonTypeIdResolver(ModelDataTypeIdResolver.class)
+	@JsonTypeIdResolver(DataTypeIdResolver.class)
 	private T data;
-
 }

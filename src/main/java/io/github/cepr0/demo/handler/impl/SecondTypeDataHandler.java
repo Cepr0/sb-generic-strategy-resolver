@@ -1,15 +1,16 @@
 package io.github.cepr0.demo.handler.impl;
 
-import io.github.cepr0.demo.handler.ModelHandler;
-import io.github.cepr0.demo.model.data.SecondTypeData;
+import io.github.cepr0.demo.data.impl.SecondTypeData;
+import io.github.cepr0.demo.handler.DataHandlerStrategy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class SecondTypeDataHandler implements ModelHandler<SecondTypeData> {
+public class SecondTypeDataHandler implements DataHandlerStrategy<SecondTypeData> {
 	@Override
-	public void handle(SecondTypeData data) {
-		log.info("[i] Handling a SecondModel: {}...", data);
+	public SecondTypeData handle(SecondTypeData data) {
+		log.info("[i] Handling a Second type data: {}...", data);
+		return data;
 	}
 }

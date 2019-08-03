@@ -1,4 +1,4 @@
-package io.github.cepr0.demo.model;
+package io.github.cepr0.demo.data;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.DatabindContext;
@@ -10,16 +10,16 @@ import lombok.extern.slf4j.Slf4j;
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CUSTOM;
 
 @Slf4j
-public class ModelDataTypeIdResolver extends TypeIdResolverBase {
+public class DataTypeIdResolver extends TypeIdResolverBase {
 
 	@Override
 	public JavaType typeFromId(DatabindContext context, String id) {
 		TypeFactory typeFactory = TypeFactory.defaultInstance();
 		try {
-			ModelDataType modelDataType = ModelDataType.valueOf(id);
-			return typeFactory.constructType(modelDataType.getModelDataType());
+			DataType dataType = DataType.valueOf(id);
+			return typeFactory.constructType(dataType.getType());
 		} catch (IllegalArgumentException e) {
-			log.warn("[w] Model data type is not defined: {}", id);
+			log.warn("[w] Data type is not defined: {}", id);
 			return typeFactory.constructType(DefaultData.class);
 		}
 	}

@@ -3,10 +3,7 @@ package io.github.cepr0.resolver;
 import org.springframework.core.ResolvableType;
 import org.springframework.lang.NonNull;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class GenericStrategyResolver<T, D> {
 
@@ -25,5 +22,9 @@ public class GenericStrategyResolver<T, D> {
 
 	public Optional<T> resolve(Class<? extends D> dataType) {
 		return Optional.ofNullable((strategies.get(dataType)));
+	}
+
+	public Set<T> getStrategies() {
+		return new HashSet<>(strategies.values());
 	}
 }

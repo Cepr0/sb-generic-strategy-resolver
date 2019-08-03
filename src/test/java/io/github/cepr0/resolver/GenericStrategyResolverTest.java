@@ -17,14 +17,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration
 public class GenericStrategyResolverTest {
 
-	@Autowired
-	private GenericStrategyResolver<TestStrategy, TestData> resolver1;
+	@Autowired private GenericStrategyResolver<TestStrategy, TestData> resolver1;
+	@Autowired private GenericStrategyResolver<SideStrategy, TestData> resolver2;
+	@Autowired private GenericStrategyResolver<SideStrategy, SideData> resolver3;
 
-	@Autowired
-	private GenericStrategyResolver<SideStrategy, TestData> resolver2;
-
-	@Autowired
-	private GenericStrategyResolver<SideStrategy, SideData> resolver3;
+	@Autowired private FirstStrategy firstStrategy;
+	@Autowired private SecondStrategy secondStrategy;
+	@Autowired private FirstSideStrategy firstSideStrategy;
+	@Autowired private SecondSideStrategy secondSideStrategy;
 
 	@Test
 	public void testStrategy() {
@@ -45,6 +45,13 @@ public class GenericStrategyResolverTest {
 		assertThat(resolver3.resolve(FirstSideData.class)).containsInstanceOf(FirstSideStrategy.class);
 		assertThat(resolver3.resolve(SecondSideData.class)).containsInstanceOf(SecondSideStrategy.class);
 		assertThat(resolver3.resolve(SideData.class)).isEmpty();
+	}
+
+	@Test
+	public void sets() {
+		assertThat(resolver1.getStrategies()).hasSize(2).containsOnly(firstStrategy, secondStrategy);
+		assertThat(resolver2.getStrategies()).hasSize(2).containsOnly(firstSideStrategy, secondSideStrategy);
+		assertThat(resolver2.getStrategies()).hasSize(2).containsOnly(firstSideStrategy, secondSideStrategy);
 	}
 
 	@Configuration

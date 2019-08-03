@@ -1,36 +1,29 @@
 package io.github.cepr0.resolver;
 
 import org.springframework.core.ResolvableType;
+import org.springframework.lang.NonNull;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class GenericStrategyResolver<T, D> {
 
-	private final Collection<? extends T> strategies;
+	private final Map<Class<?>, T> beans = new HashMap<>();
 
-	public GenericStrategyResolver(Collection<? extends T> strategies) {
-		this.strategies = strategies;
+	public GenericStrategyResolver(@NonNull Collection<T> beans) {
+		for (T bean : beans) {
+			ResolvableType beanType = ResolvableType.forInstance(bean);
+			for (ResolvableType beanInterface : beanType.getInterfaces()) {
+				for (ResolvableType beanInterfaceGenericParameter : beanInterface.getGenerics()) {
+					this.beans.put(beanInterfaceGenericParameter.getRawClass(), bean);
+				}
+			}
+		}
 	}
 
-	public Optional<? extends T> get(Class<? extends D> dataType) {
-		return strategies.stream()
-				.filter(strategy -> {
-
-					ResolvableType strategyType = ResolvableType.forInstance(strategy);
-
-					return Stream.of(strategyType.getInterfaces()).anyMatch(strategyInterface -> {
-
-						boolean isStrategyImplementsT = strategyInterface.isInstance(strategy);
-
-						boolean isStrategyGenericParameterImplementsD = Stream
-								.of(strategyInterface.getGenerics())
-								.anyMatch(strategyInterfaceType -> strategyInterfaceType.isAssignableFrom(dataType));
-
-						return isStrategyImplementsT && isStrategyGenericParameterImplementsD;
-					});
-				})
-				.findFirst();
+	public Optional<T> resolve(Class<? extends D> dataType) {
+		return Optional.ofNullable((beans.get(dataType)));
 	}
 }

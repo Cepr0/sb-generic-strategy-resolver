@@ -1,7 +1,6 @@
 # Spring GenericStrategyResolver
 
 This class makes it possible to 'resolve' generic [Strategy][1] implementations by its generic parameter.
-For example: 
 
 Assume we have some generic strategy:
 
@@ -73,10 +72,10 @@ public class TestStrategyContext {
 }
 ```
 
-See a usage example of `GenericStrategyResolver` in the package [demo][2] - it's a simple
-REST service that takes POST requests with a different data and produce the different responses
-and logging depends on the input data. Requests examples you can find in the [demo.http][3] 
-(and run they right there, if you are using Intellij IDEA).   
+See the usage example of `GenericStrategyResolver` in the package [demo][2] - it's a simple
+REST service that takes POST requests with a different data and produces the different responses
+and logging depends on the input data. Requests examples can be found in the [demo.http][3] 
+(you can run they right there, if you are using Intellij IDEA).   
 
 [1]: https://en.wikipedia.org/wiki/Strategy_pattern
 [2]: src/main/java/io/github/cepr0/demo

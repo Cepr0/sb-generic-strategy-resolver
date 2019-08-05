@@ -1,6 +1,6 @@
 # Spring GenericStrategyResolver
 
-This class makes it possible to 'resolve' generic [Strategy][1] implementations by its generic parameter.
+[GenericStrategyResolver][4] makes it possible to 'resolve' generic [Strategy][1] implementations by its generic parameter.
 
 Assume we have some generic strategy:
 
@@ -80,3 +80,4 @@ and logging depends on the input data. Requests examples can be found in the [de
 [1]: https://en.wikipedia.org/wiki/Strategy_pattern
 [2]: src/main/java/io/github/cepr0/demo
 [3]: demo.http
+[4]: src/main/java/io/github/cepr0/resolver/GenericStrategyResolver.java
